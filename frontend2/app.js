@@ -57,7 +57,12 @@
       else item.removeAttribute('aria-current');
     });
     const crumb = document.querySelector('.breadcrumbs strong');
-    crumb.textContent = ({ overview: 'Ask', interpretation: 'Analysis' })[name] || 'Ask';
+    crumb.textContent = ({
+      overview: 'Ask',
+      analysis: 'Analysis Workspace',
+      knowledge: 'Knowledge & Sources',
+      insights: 'Exploration Insights'
+    })[name] || 'Ask';
     document.getElementById('sidebar').classList.remove('is-open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
