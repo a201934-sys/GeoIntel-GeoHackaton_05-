@@ -1,384 +1,275 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoIntel | Exploration Copilot</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f5" />
+    <meta name="description" content="An explainable exploration geoscience copilot prototype." />
+    <title>Exploration Copilot | GeoHackathon</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#overview" aria-label="Exploration Copilot home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M4 21.5c4.2-5.7 7.7-8.1 11.6-8.1 3.8 0 6.4 2.4 12.4 2.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M4 25.5c4.2-5.7 7.7-8.1 11.6-8.1 3.8 0 6.4 2.4 12.4 2.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".56" />
+              <circle cx="23.5" cy="9" r="3.5" fill="#e4b766" />
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>FIELDWISE</strong><small>EXPLORATION COPILOT</small></span>
+        </a>
 
-<body>
-
-<div class="app-container">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <div class="brand">
-            <div class="brand-icon">G</div>
-            <div>
-                <h2>GeoIntel</h2>
-                <span>EXPLORATION COPILOT</span>
-            </div>
+        <div class="workspace-switcher">
+          <span class="overline">ACTIVE WORKSPACE</span>
+          <button class="workspace-picker" type="button" aria-label="Current workspace: Challenge 1">
+            <span class="workspace-avatar">C1</span>
+            <span class="workspace-name"><strong>Challenge 1</strong><small>Prospect evaluation</small></span>
+            <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+          </button>
         </div>
 
-        <div class="nav-label">WORKSPACE</div>
-
-        <nav>
-            <button class="nav-item active" data-page="assistant">
-                ✦ &nbsp; AI Assistant
-            </button>
-
-            <button class="nav-item" data-page="data">
-                ▦ &nbsp; Data Sources
-            </button>
-
-            <button class="nav-item" data-page="analysis">
-                ◈ &nbsp; Seismic Analysis
-            </button>
-
-            <button class="nav-item" data-page="insights">
-                ◎ &nbsp; Exploration Insights
-            </button>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <span class="overline nav-label">WORKSPACE</span>
+          <button class="nav-item is-active" type="button" data-view="overview" aria-current="page">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1"/></svg>
+            <span>Overview</span>
+          </button>
+          <button class="nav-item" type="button" data-view="data">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h8a2.5 2.5 0 0 1 2.5 2.5v9A2.5 2.5 0 0 1 14 17H6a2.5 2.5 0 0 1-2.5-2.5v-9Z"/><path d="M7 7h6M7 10h6M7 13h3"/></svg>
+            <span>Data library</span><span class="nav-count">3</span>
+          </button>
+          <button class="nav-item" type="button" data-view="interpretation">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.8c2.1-4.2 3.8-6.3 5.6-6.3 2 0 2.9 4.8 4.8 4.8 1.2 0 2.2-1.5 3.6-4.8"/><path d="M3 17h14"/><circle cx="8.6" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <span>Interpretation</span>
+          </button>
+          <button class="nav-item" type="button" data-view="analogues">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="m12.2 12.2 4.3 4.3M6.5 8.5h4M8.5 6.5v4"/></svg>
+            <span>Analogue search</span>
+          </button>
+          <button class="nav-item" type="button" data-view="risks">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3 17 16H3L10 3Z"/><path d="M10 7.5v4M10 14.2v.1"/></svg>
+            <span>Risk review</span>
+          </button>
         </nav>
 
         <div class="sidebar-bottom">
-            <div class="system-status">
-                <span class="status-dot"></span>
-                System Online
-            </div>
-            <p>GeoIntel v1.0</p>
-            <p>GeoHackathon 2026</p>
+          <div class="connection-card">
+            <div class="connection-title"><span class="status-dot muted"></span><strong>Notebook not connected</strong></div>
+            <p>Link your Python workflow to generate evidence-based answers.</p>
+            <button type="button" class="text-button" data-view-link="data">View data setup <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="sidebar-user">
+            <span class="user-avatar">KM</span>
+            <span><strong>Geo team</strong><small>Local prototype</small></span>
+            <button class="more-button" type="button" aria-label="More options">···</button>
+          </div>
         </div>
+      </aside>
 
-    </aside>
-
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-        <!-- TOP BAR -->
+      <main class="main-area">
         <header class="topbar">
-            <div>
-                <span class="breadcrumb">Workspace / </span>
-                <strong id="page-title">AI Assistant</strong>
-            </div>
-
-            <div class="model-status">
-                <span class="status-dot"></span>
-                Gemma 4
-            </div>
+          <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open navigation">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" /></svg>
+          </button>
+          <div class="breadcrumbs"><span>Workspaces</span><span class="crumb-divider">/</span><strong>Challenge 1</strong></div>
+          <div class="topbar-actions">
+            <span class="demo-pill"><span></span> DEMO MODE</span>
+            <button class="help-button" type="button" aria-label="About this prototype" title="About this prototype">?</button>
+            <span class="top-avatar" aria-label="Geo team">KM</span>
+          </div>
         </header>
 
+        <div class="workspace-body">
+          <div class="content-column">
+            <section class="view-panel is-active" id="view-overview" aria-labelledby="page-title-overview">
+              <div class="page-heading">
+                <div>
+                  <div class="eyebrow"><span class="eyebrow-line"></span> CHALLENGE 1 <span class="eyebrow-dot">·</span> EXPLORATION COPILOT</div>
+                  <h1 id="page-title-overview">Prospect review</h1>
+                  <p class="page-subtitle">A shared view of the evidence behind your next exploration decision.</p>
+                </div>
+                <div class="heading-actions">
+                  <button class="button button-secondary" type="button" data-view-link="data">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>
+                    Add data
+                  </button>
+                  <button class="button button-primary" type="button" id="openCopilot">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.3v2.1M10 14.6v2.1M3.3 10h2.1M14.6 10h2.1M5.3 5.3l1.5 1.5m6.4 6.4 1.5 1.5m0-9.4-1.5 1.5m-6.4 6.4-1.5 1.5"/><circle cx="10" cy="10" r="3.3"/></svg>
+                    Ask Copilot
+                  </button>
+                </div>
+              </div>
 
-        <!-- AI ASSISTANT -->
-        <section class="page-section active" id="assistant">
+              <div class="demo-banner" role="note">
+                <span class="banner-icon" aria-hidden="true">i</span>
+                <p><strong>Demo workspace.</strong> The seismic preview and assistant replies are illustrative until your challenge data and notebook are connected.</p>
+                <button class="banner-dismiss" type="button" aria-label="Dismiss demo notice">×</button>
+              </div>
 
-            <div class="welcome-section">
-                <span class="eyebrow">AI-POWERED GEOSCIENCE INTELLIGENCE</span>
+              <div class="summary-grid" aria-label="Workspace status">
+                <article class="summary-card">
+                  <div class="summary-top"><span class="summary-icon icon-teal"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5 10 2l7 3.5-7 3.5-7-3.5Z"/><path d="M3 10l7 3.5 7-3.5M3 14.5 10 18l7-3.5"/></svg></span><span class="summary-label">CHALLENGE DATA PACK</span></div>
+                  <strong class="summary-value">9 seismic volumes</strong>
+                  <div class="summary-foot"><span>5 stack · 4 inversion</span><span class="status-tag status-available">On HPC</span></div>
+                </article>
+                <article class="summary-card">
+                  <div class="summary-top"><span class="summary-icon icon-gold"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 17V4.5a2.5 2.5 0 0 1 5 0V17M10 8.5h4a2 2 0 0 1 2 2V17M3 17h14"/><path d="M6.3 5.5h2.4M6.3 8h2.4M6.3 10.5h2.4M12 12h2"/></svg></span><span class="summary-label">WELL DATA</span></div>
+                  <strong class="summary-value">13 well packages</strong>
+                  <div class="summary-foot"><span>LAS logs &amp; deviations</span><span class="status-tag status-available">On HPC</span></div>
+                </article>
+                <article class="summary-card summary-card-muted">
+                  <div class="summary-top"><span class="summary-icon icon-slate"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.8 17 6.4v7.2L10 17.2 3 13.6V6.4l7-3.6Z"/><path d="m3.5 6.7 6.5 3.4 6.5-3.4M10 10.1v6.5"/></svg></span><span class="summary-label">WORKING INTERPRETATION</span></div>
+                  <strong class="summary-value">Awaiting evidence</strong>
+                  <div class="summary-foot"><span>Connect notebook to assess trap style</span><span class="status-tag status-pending">Pending</span></div>
+                </article>
+              </div>
 
-                <h1>Explore beneath the surface.</h1>
+              <section class="panel seismic-panel" aria-labelledby="seismic-title">
+                <div class="panel-header seismic-header">
+                  <div>
+                    <div class="panel-kicker">SUBSURFACE VIEW <span class="tiny-separator">·</span> CONCEPTUAL ONLY</div>
+                    <h2 id="seismic-title">Seismic section</h2>
+                    <p class="panel-subtitle">Illustrative geometry for the interface preview — not source data.</p>
+                  </div>
+                  <div class="view-controls" aria-label="Seismic display controls">
+                    <button class="select-control" type="button" id="sectionSelect" aria-label="Selected section">Section A–A′ <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+                    <button class="icon-control is-selected" type="button" id="toggleHorizons" aria-pressed="true" title="Toggle horizon picks" aria-label="Toggle horizon picks">
+                      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6c3-3 5 3 8 0s4-1 6 0M3 11c3-3 5 3 8 0s4-1 6 0M3 16c3-3 5 3 8 0s4-1 6 0"/></svg>
+                    </button>
+                    <button class="icon-control is-selected" type="button" id="toggleWells" aria-pressed="true" title="Toggle well markers" aria-label="Toggle well markers">
+                      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.8v14.4M7.5 5.5h5M7.5 9h5M7.5 12.5h5"/><circle cx="10" cy="2.8" r="1.5"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="seismic-canvas" role="img" aria-label="Conceptual seismic section illustration with layered reflectors, a possible fault, and two illustrative well markers">
+                  <div class="canvas-badge"><span class="live-dot"></span> PREVIEW <span class="canvas-badge-divider">/</span> NOT SOURCE DATA</div>
+                  <svg class="seismic-svg" viewBox="0 0 900 340" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="seisBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102a38"/><stop offset=".52" stop-color="#0b1c29"/><stop offset="1" stop-color="#163443"/></linearGradient>
+                      <linearGradient id="seisFade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#82b0aa" stop-opacity=".08"/><stop offset="1" stop-color="#82b0aa" stop-opacity="0"/></linearGradient>
+                      <pattern id="grid" width="90" height="56" patternUnits="userSpaceOnUse"><path d="M90 0H0V56" fill="none" stroke="#d5e7df" stroke-opacity=".075" stroke-width="1"/></pattern>
+                    </defs>
+                    <rect width="900" height="340" fill="url(#seisBg)"/>
+                    <rect width="900" height="340" fill="url(#grid)"/>
+                    <rect y="35" width="900" height="135" fill="url(#seisFade)"/>
+                    <g class="reflector-layer" fill="none" stroke-linecap="round">
+                      <path d="M0 82 C82 74 124 101 202 92S327 72 394 88 494 114 552 103 680 72 752 92 845 112 900 98" stroke="#9bc4bb" stroke-opacity=".42" stroke-width="1.2"/>
+                      <path d="M0 105 C86 94 136 126 213 115S333 96 401 110 481 138 546 126 681 96 750 116 847 134 900 121" stroke="#d4e3da" stroke-opacity=".42" stroke-width="1.4"/>
+                      <path d="M0 132 C82 121 136 149 213 140S325 121 399 134 480 162 546 151 676 121 751 141 843 160 900 147" stroke="#82aaa6" stroke-opacity=".58" stroke-width="1.5"/>
+                      <path d="M0 159 C86 148 140 176 216 166S325 147 398 160 479 187 545 176 680 146 752 165 847 185 900 173" stroke="#d6e3da" stroke-opacity=".4" stroke-width="1.1"/>
+                      <path d="M0 187 C91 178 144 202 218 192S331 174 400 186 480 212 546 201 678 173 753 190 843 211 900 199" stroke="#7aa19d" stroke-opacity=".64" stroke-width="1.4"/>
+                      <path d="M0 216 C89 204 141 231 218 219S328 201 400 213 482 239 549 228 677 200 753 219 843 239 900 225" stroke="#d6e3da" stroke-opacity=".39" stroke-width="1.2"/>
+                      <path d="M0 246 C86 232 143 260 219 247S329 230 400 242 482 268 550 257 681 230 753 247 845 268 900 254" stroke="#6f9694" stroke-opacity=".55" stroke-width="1.3"/>
+                      <path d="M0 275 C87 261 143 287 220 276S328 260 401 272 484 297 550 286 681 259 755 277 844 296 900 283" stroke="#c5d8d0" stroke-opacity=".31" stroke-width="1.1"/>
+                      <path d="M0 307 C84 292 145 318 222 306S332 292 402 303 484 327 553 316 683 291 758 307 845 326 900 313" stroke="#73918f" stroke-opacity=".48" stroke-width="1.1"/>
+                      <path d="M0 117 C94 107 145 137 226 126S332 109 398 123 474 148 536 137 678 106 756 128 853 146 900 133" stroke="#eff1df" stroke-opacity=".19" stroke-width="4"/>
+                      <path d="M0 218 C90 207 144 234 221 223S329 205 400 217 480 244 550 231 681 204 754 222 847 242 900 228" stroke="#e4b766" stroke-opacity=".9" stroke-width="2"/>
+                    </g>
+                    <g class="fault-layer">
+                      <path d="M575 48 536 117 497 174 461 236 424 304" fill="none" stroke="#e1aa5a" stroke-width="2" stroke-dasharray="5 5"/>
+                      <path d="M587 51 548 120 510 177 473 239 437 307" fill="none" stroke="#e1aa5a" stroke-opacity=".18" stroke-width="12"/>
+                    </g>
+                    <g class="well-layer" fill="none" stroke="#8ed0c1">
+                      <path d="M315 43v238" stroke-width="1.5" stroke-dasharray="4 5" stroke-opacity=".85"/>
+                      <circle cx="315" cy="43" r="4.5" fill="#8ed0c1" stroke="#0e2734" stroke-width="2"/>
+                      <path d="M706 43v238" stroke-width="1.5" stroke-dasharray="4 5" stroke-opacity=".85"/>
+                      <circle cx="706" cy="43" r="4.5" fill="#8ed0c1" stroke="#0e2734" stroke-width="2"/>
+                    </g>
+                    <g font-family="Inter, Arial, sans-serif" font-size="10" letter-spacing="1.2" fill="#d7e7df">
+                      <text x="292" y="31">WELL A</text><text x="683" y="31">WELL B</text>
+                      <text x="592" y="97" fill="#e8bf78">FAULT CANDIDATE</text>
+                      <text x="18" y="224" fill="#e4b766">HORIZON PICK (ILLUSTRATIVE)</text>
+                    </g>
+                    <g stroke="#e5f0e9" stroke-opacity=".45" stroke-width="1">
+                      <path d="M0 340h900"/><path d="M0 335v5M180 335v5M360 335v5M540 335v5M720 335v5M900 335v5"/>
+                    </g>
+                    <g fill="#b8cbc5" font-family="Inter, Arial, sans-serif" font-size="9">
+                      <text x="8" y="329">TRACE 0</text><text x="847" y="329">TRACE 900</text>
+                    </g>
+                  </svg>
+                  <div class="canvas-scale"><span>INTERPRETATION LAYERS</span><span class="scale-line"></span><span>NO DEPTH SCALE</span></div>
+                </div>
+                <div class="legend-row">
+                  <span><i class="legend-line legend-horizon"></i>Illustrative horizon</span>
+                  <span><i class="legend-line legend-fault"></i>Fault candidate</span>
+                  <span><i class="legend-well"></i>Well markers</span>
+                  <span class="legend-note">Replace with HPC section output</span>
+                </div>
+              </section>
 
-                <p>
-                    Your intelligent exploration companion.
-                    Analyze geological evidence, interpret prospects
-                    and generate exploration recommendations.
-                </p>
+              <section class="evidence-section" aria-labelledby="evidence-title">
+                <div class="section-heading"><div><span class="panel-kicker">EVIDENCE STATUS</span><h2 id="evidence-title">What informs the interpretation</h2></div><button class="quiet-link" type="button" data-view-link="data">Manage sources <span aria-hidden="true">→</span></button></div>
+                <div class="evidence-grid">
+                  <article class="evidence-card"><div class="evidence-icon evidence-seismic"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 10h3l2-5 3.2 10 2.1-6 1.4 3h3.3"/></svg></div><div><h3>Seismic geometry</h3><p>Volumes are available on HPC. Interpretation output not connected.</p></div><span class="evidence-state">Pending</span></article>
+                  <article class="evidence-card"><div class="evidence-icon evidence-well"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 17V4.5a2.5 2.5 0 0 1 5 0V17M4 17h12M8.5 7h2M8.5 10h2M8.5 13h2"/></svg></div><div><h3>Well control</h3><p>Log files are listed in the challenge bundle. No well ties loaded.</p></div><span class="evidence-state">Pending</span></article>
+                  <article class="evidence-card"><div class="evidence-icon evidence-context"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M3.4 7.5h13.2M4.6 13.5h10.8M10 3c2 2 3 4.3 3 7s-1 5-3 7c-2-2-3-4.3-3-7s1-5 3-7Z"/></svg></div><div><h3>Regional context</h3><p>Add basin studies or analogue references to compare play elements.</p></div><span class="evidence-state">No sources</span></article>
+                </div>
+              </section>
+            </section>
+
+            <section class="view-panel" id="view-data" aria-labelledby="page-title-data" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> WORKSPACE SETUP</div><h1 id="page-title-data">Data library</h1><p class="page-subtitle">Organise the files and references your copilot will use.</p></div></div>
+              <div class="demo-banner" role="note"><span class="banner-icon">i</span><p><strong>HPC data stays on the team environment.</strong> This browser prototype only displays selected filenames; it does not upload or process files.</p></div>
+              <section class="panel upload-panel">
+                <div class="upload-copy"><span class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5"/></svg></span><div><h2>Add sources to this workspace</h2><p>Choose seismic, well, report or analogue files to show them in this session.</p></div></div>
+                <label class="drop-zone" id="dropZone" for="fileInput"><span class="drop-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v5h14v-5"/></svg></span><strong>Drop files here, or <span>browse</span></strong><small>SEG-Y, LAS, TXT, XLSX, PDF · local preview only</small></label>
+                <input id="fileInput" type="file" multiple accept=".sgy,.segy,.las,.txt,.xlsx,.xls,.pdf,.csv" class="visually-hidden" />
+                <div id="selectedFiles" class="selected-files" aria-live="polite"></div>
+              </section>
+              <div class="section-heading library-heading"><div><span class="panel-kicker">CHALLENGE 1 / 2 BUNDLE</span><h2>Provided input inventory</h2><p>As listed in the participant HPC manual.</p></div><span class="status-tag status-available">Available on HPC</span></div>
+              <div class="library-list">
+                <article class="library-row"><span class="file-kind kind-seismic">SEIS</span><div><strong>Seismic volumes</strong><small>Stack and inversion volumes</small></div><b>9 volumes</b><span class="row-status"><i></i> HPC path</span><svg class="row-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></article>
+                <article class="library-row"><span class="file-kind kind-well">WELL</span><div><strong>Well data</strong><small>LAS logs, deviations and well list</small></div><b>13 well packages</b><span class="row-status"><i></i> HPC path</span><svg class="row-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></article>
+                <article class="library-row"><span class="file-kind kind-report">REF</span><div><strong>Reports &amp; basin analogues</strong><small>Bring your own studies or field references</small></div><b>Not added</b><span class="row-status pending-row"><i></i> Needs input</span><svg class="row-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></article>
+              </div>
+              <div class="integration-note"><span class="integration-mark">↗</span><div><strong>Notebook connection</strong><p>Keep source files in the assigned HPC storage. Connect a small Python API to return processed metadata and analysis results to this interface.</p></div><span class="status-tag status-pending">Not connected</span></div>
+            </section>
+
+            <section class="view-panel" id="view-interpretation" aria-labelledby="page-title-interpretation" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> REASONING WORKSPACE</div><h1 id="page-title-interpretation">Interpretation</h1><p class="page-subtitle">Track the hypothesis, supporting evidence and alternative explanations.</p></div><button class="button button-secondary" type="button" id="askCopilotInterpretation">Ask Copilot</button></div>
+              <div class="demo-banner"><span class="banner-icon">i</span><p><strong>No notebook output connected.</strong> These sections are ready for the analysis your Python workflow returns.</p></div>
+              <div class="reasoning-flow"><div class="flow-step"><span class="flow-number">01</span><span class="flow-symbol">⌁</span><div><small>OBSERVATIONS</small><h2>Seismic evidence</h2><p>Horizon picks, fault geometry, amplitude and inversion attributes.</p><span class="status-tag status-pending">Waiting for data</span></div></div><span class="flow-connector" aria-hidden="true">→</span><div class="flow-step"><span class="flow-number">02</span><span class="flow-symbol flow-gold">◇</span><div><small>HYPOTHESES</small><h2>Trap mechanism</h2><p>Compare structural, stratigraphic and combination trap scenarios.</p><span class="status-tag status-pending">Not assessed</span></div></div><span class="flow-connector" aria-hidden="true">→</span><div class="flow-step"><span class="flow-number">03</span><span class="flow-symbol flow-green">✓</span><div><small>RECOMMENDATION</small><h2>Next investigation</h2><p>Prioritise the uncertainty that could change the prospect decision.</p><span class="status-tag status-pending">Not generated</span></div></div></div>
+              <section class="panel empty-analysis"><span class="empty-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 31c8-11 14-15 22-15 5 0 9 2 14 3M6 37c8-11 14-15 22-15 5 0 9 2 14 3"/><circle cx="34" cy="11" r="4"/></svg></span><h2>Your geological reasoning will appear here</h2><p>Connect the notebook, then ask a question to build an evidence-linked interpretation. Keep alternative explanations visible as the evidence develops.</p><button class="button button-primary" type="button" data-view-link="data">Set up data sources <span aria-hidden="true">→</span></button></section>
+            </section>
+
+            <section class="view-panel" id="view-analogues" aria-labelledby="page-title-analogues" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> PLAY COMPARISON</div><h1 id="page-title-analogues">Analogue search</h1><p class="page-subtitle">Compare play elements and see why an analogue is relevant.</p></div><button class="button button-secondary" type="button" data-view-link="data">Add references</button></div>
+              <div class="demo-banner"><span class="banner-icon">i</span><p><strong>No analogue sources added.</strong> The prototype will not invent field matches. Add regional studies or published field summaries to enable comparison.</p></div>
+              <section class="panel analogue-search-panel"><div class="search-title"><span class="search-illustration"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13.5" cy="13.5" r="8"/><path d="m19.5 19.5 7 7M10 13.5h7M13.5 10v7"/></svg></span><div><h2>Find a useful comparison</h2><p>Search across structural style, reservoir, seal, charge and tectonic setting.</p></div></div><div class="analogue-filters"><label>STRUCTURAL STYLE<select disabled><option>Any structural style</option></select></label><label>RESERVOIR<select disabled><option>Any reservoir type</option></select></label><label>REGION<input type="text" placeholder="Add a basin or region" disabled /></label><button class="button button-primary" type="button" disabled>Search analogues</button></div><div class="empty-search"><span class="search-dots">···</span><strong>References will show up here</strong><p>Start by adding a basin study or analogue reference in the Data library.</p><button type="button" class="quiet-link" data-view-link="data">Go to Data library <span aria-hidden="true">→</span></button></div></section>
+            </section>
+
+            <section class="view-panel" id="view-risks" aria-labelledby="page-title-risks" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> DECISION SUPPORT</div><h1 id="page-title-risks">Risk review</h1><p class="page-subtitle">Make the key uncertainties visible before recommending the next step.</p></div><button class="button button-secondary" type="button" id="askCopilotRisks">Ask Copilot</button></div>
+              <div class="demo-banner"><span class="banner-icon">i</span><p><strong>Risk register is empty.</strong> Connect evidence first; the copilot should explain each risk and what observation could reduce it.</p></div>
+              <div class="risk-summary"><div><span class="risk-count">—</span><span><strong>Open geological risks</strong><small>Will populate from notebook analysis</small></span></div><span class="risk-priority"><i></i> No priority set</span></div>
+              <section class="panel risk-table"><div class="risk-table-head"><span>RISK / UNCERTAINTY</span><span>WHY IT MATTERS</span><span>WHAT TO CHECK NEXT</span><span>STATUS</span></div><div class="risk-empty"><span class="risk-empty-icon">!</span><strong>No risks have been assessed</strong><p>Examples to investigate may include trap integrity, reservoir presence, seal effectiveness and charge timing. The team should validate each against the challenge data.</p><button class="button button-secondary" type="button" id="askCopilotRisks2">Explore key risks with Copilot</button></div></section>
+              <p class="risk-footnote">Risk categories are prompts for review, not findings about this prospect.</p>
+            </section>
+          </div>
+
+          <aside class="copilot-panel" id="copilotPanel" aria-label="Exploration Copilot chat">
+            <div class="copilot-header"><div class="copilot-heading"><span class="copilot-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v2.1M12 18.4v2.1M3.5 12h2.1M18.4 12h2.1M5.9 5.9l1.5 1.5m9.2 9.2 1.5 1.5m0-12.2-1.5 1.5m-9.2 9.2-1.5 1.5"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>Exploration Copilot</strong><small><i></i> Prototype mode</small></span></div><button class="panel-menu" type="button" aria-label="Copilot options">···</button></div>
+            <div class="context-card"><div class="context-title"><span class="context-spark">✦</span><strong>Current context</strong><span class="context-chevron">⌃</span></div><div class="context-pills"><span><i class="pill-dot dot-seismic"></i>Seismic <b>not linked</b></span><span><i class="pill-dot dot-well"></i>Wells <b>not linked</b></span><span><i class="pill-dot dot-report"></i>Basin studies <b>none</b></span></div></div>
+            <div class="chat-scroll" id="chatMessages" aria-live="polite" aria-relevant="additions text">
+              <div class="chat-date"><span></span> TODAY <span></span></div>
+              <div class="assistant-message"><span class="message-avatar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v2.1M12 18.4v2.1M3.5 12h2.1M18.4 12h2.1M5.9 5.9l1.5 1.5m9.2 9.2 1.5 1.5m0-12.2-1.5 1.5m-9.2 9.2-1.5 1.5"/><circle cx="12" cy="12" r="3.5"/></svg></span><div class="message-body"><div class="message-meta"><strong>Copilot</strong><time>Just now</time></div><div class="message-bubble"><p>Ready when you are. I can help compare trap hypotheses, connect evidence and identify the next uncertainty to investigate.</p><p class="message-hint">Connect your notebook for analysis. In this preview, replies are illustrative only.</p></div></div></div>
             </div>
-
-
-            <!-- OVERVIEW CARDS -->
-            <div class="overview-grid">
-
-                <div class="stat-card">
-                    <span>SELECTED WELL</span>
-                    <h2>NO-1</h2>
-                    <small>Well data loaded</small>
-                </div>
-
-                <div class="stat-card">
-                    <span>ANALYSIS INTERVALS</span>
-                    <h2>05</h2>
-                    <small>Depth-dependent analysis</small>
-                </div>
-
-                <div class="stat-card">
-                    <span>MEAN SAND PROBABILITY</span>
-                    <h2>0.652</h2>
-                    <small>2800 m MDKB · Provisional</small>
-                </div>
-
-            </div>
-
-
-            <!-- CHAT SECTION -->
-            <div class="chat-container">
-
-                <div class="chat-heading">
-                    <div>
-                        <h2>GeoIntel AI Assistant</h2>
-                        <p>Ask anything about your exploration prospect.</p>
-                    </div>
-
-                    <span class="ai-badge">✦ AI ACTIVE</span>
-                </div>
-
-
-                <div id="chat-messages" class="chat-messages">
-
-                    <div class="message assistant">
-                        <strong>GeoIntel AI</strong>
-                        <p>
-                            Hello, Geoscientist! I'm GeoIntel,
-                            your AI exploration assistant.
-
-                            I can help you interpret seismic data,
-                            evaluate reservoir potential, identify
-                            geological risks and recommend further
-                            exploration actions.
-
-                            What would you like to investigate today?
-                        </p>
-                    </div>
-
-                </div>
-                
-<!-- AI VISUALIZATION PANEL -->
-<div id="visualization-panel" class="visualization-panel" hidden>
-
-    <div class="visualization-header">
-        <div>
-            <span class="eyebrow">GEOSCIENCE VISUALIZATION</span>
-            <h2 id="visualization-title">AI Visualization</h2>
-            <p id="visualization-description">
-                Geological data visualization
-            </p>
+            <div class="suggested-prompts" id="suggestedPrompts"><span class="suggestion-label">TRY ASKING</span><button type="button" class="prompt-chip">Structural or stratigraphic trap?</button><button type="button" class="prompt-chip">Which evidence should we check next?</button><button type="button" class="prompt-chip">What could invalidate this prospect?</button></div>
+            <form class="chat-composer" id="chatForm">
+              <label class="visually-hidden" for="chatInput">Ask a question about the prospect</label>
+              <textarea id="chatInput" rows="1" placeholder="Ask about this prospect…" maxlength="800" required></textarea>
+              <div class="composer-footer"><span class="composer-note"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.2 13 4v3.8c0 3.1-2.2 5-5 6-2.8-1-5-2.9-5-6V4l5-1.8Z"/><path d="M8 5.1v3.4M8 10.7v.1"/></svg>Evidence-linked answers</span><button class="send-button" type="submit" aria-label="Send message"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m3 9 14-6-5.8 14-2.3-5.9L3 9Z"/><path d="M8.9 11.1 17 3"/></svg></button></div>
+            </form>
+            <p class="copilot-disclaimer">Prototype replies are not geological findings.</p>
+          </aside>
         </div>
-        <span class="ai-badge">✦ AI GENERATED</span>
+        <footer class="app-footer"><span><i class="footer-dot"></i> Local prototype</span><span>Challenge 1 · Exploration Copilot</span><button type="button" id="aboutLink">About demo mode</button></footer>
+      </main>
     </div>
-
-    <div class="visualization-tabs">
-        <button class="viz-tab active" data-viz="seismic">
-            Seismic Model
-        </button>
-        <button class="viz-tab" data-viz="welllog">
-            Well Log
-        </button>
-        <button class="viz-tab" data-viz="probability">
-            Sand Probability
-        </button>
-        <button class="viz-tab" data-viz="crosssection">
-            Cross-section
-        </button>
-    </div>
-
-    <div id="visualization-chart" class="visualization-chart">
-        <p>Select a visualization to begin.</p>
-    </div>
-
-    <p class="disclaimer">
-        Illustrative visualization unless linked to verified
-        geological datasets.
-    </p>
-
-</div>
-<!-- END AI VISUALIZATION PANEL -->
-
-
-
-                <!-- SUGGESTED QUESTIONS -->
-                <div class="suggestions">
-
-                    <button data-question="What is the most promising reservoir interval?">
-                        Reservoir potential
-                    </button>
-
-                    <button data-question="What are the key geological uncertainties?">
-                        Geological risks
-                    </button>
-
-                    <button data-question="Explain the sand probability results.">
-                        Sand probability
-                    </button>
-
-                    <button data-question="What exploration actions do you recommend?">
-                        Exploration strategy
-                    </button>
-
-                </div>
-
-
-                <!-- CHAT INPUT -->
-                <form id="chat-form" class="chat-input-area">
-
-                    <input
-                        type="text"
-                        id="chat-input"
-                        placeholder="Ask your geological question..."
-                        autocomplete="off"
-                    >
-
-                    <button type="submit" class="send-button">
-                        ➤
-                    </button>
-
-                </form>
-
-                <p class="disclaimer">
-                    AI-generated interpretations require geological
-                    validation. Results may contain uncertainties.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- DATA SOURCES -->
-        <section class="page-section" id="data">
-
-            <div class="section-heading">
-                <span class="eyebrow">PROJECT DATABASE</span>
-                <h1>Data Sources</h1>
-                <p>Overview of available exploration datasets.</p>
-            </div>
-
-            <div class="data-grid">
-
-                <div class="data-card">
-                    <h3>◈ Seismic Data</h3>
-                    <p>Seismic stack and inversion datasets</p>
-                    <span class="data-tag">Check availability</span>
-                </div>
-
-                <div class="data-card">
-                    <h3>▤ Well Data</h3>
-                    <p>Well NO-1 and petrophysical information</p>
-                    <span class="data-tag">Available</span>
-                </div>
-
-                <div class="data-card">
-                    <h3>▧ Geological Reports</h3>
-                    <p>Regional geological information</p>
-                    <span class="data-tag">Check availability</span>
-                </div>
-
-                <div class="data-card">
-                    <h3>◎ Checkshot Data</h3>
-                    <p>Well-to-seismic time-depth calibration</p>
-                    <span class="data-tag warning">Validation pending</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- SEISMIC ANALYSIS -->
-        <section class="page-section" id="analysis">
-
-            <div class="section-heading">
-                <span class="eyebrow">SUBSURFACE INTERPRETATION</span>
-                <h1>Seismic & Well Analysis</h1>
-                <p>Explore quantitative analysis and reservoir indicators.</p>
-            </div>
-
-            <div class="analysis-grid">
-
-                <div class="analysis-card">
-                    <h3>Sand Probability</h3>
-                    <p>Well NO-1 · Depth-dependent analysis</p>
-
-                    <div class="probability-value">0.652</div>
-
-                    <div class="progress-track">
-                        <div class="progress-fill"></div>
-                    </div>
-
-                    <small>Mean probability at 2800 m MDKB</small>
-                </div>
-
-                <div class="analysis-card">
-                    <h3>Maximum Probability</h3>
-                    <p>Well NO-1</p>
-
-                    <div class="probability-value">0.921</div>
-
-                    <small>Provisional inversion result</small>
-                </div>
-
-            </div>
-
-            <div class="data-card uncertainty-card">
-                <h3>Analysis Limitations</h3>
-                <p>
-                    Checkshot validation is pending.
-                    Well-to-seismic tie and vertical depth-to-time
-                    correlation have not been confirmed.
-                </p>
-            </div>
-
-        </section>
-
-
-        <!-- EXPLORATION INSIGHTS -->
-        <section class="page-section" id="insights">
-
-            <div class="section-heading">
-                <span class="eyebrow">AI-GENERATED GEOLOGICAL ASSESSMENT</span>
-                <h1>Exploration Insights</h1>
-                <p>Evidence-based interpretation and recommendations.</p>
-            </div>
-
-            <div class="data-grid">
-
-                <div class="data-card">
-                    <h3>◈ Reservoir Potential</h3>
-                    <p>
-                        Evaluate sand probability alongside
-                        lithology and petrophysical evidence.
-                    </p>
-                </div>
-
-                <div class="data-card">
-                    <h3>◎ Geological Risks</h3>
-                    <p>
-                        Assess uncertainty in lithology,
-                        fluid content and seismic correlation.
-                    </p>
-                </div>
-
-                <div class="data-card">
-                    <h3>✦ Exploration Recommendations</h3>
-                    <p>
-                        Prioritize well-to-seismic calibration
-                        and petrophysical verification.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="data-card uncertainty-card">
-                <h3>Important Notice</h3>
-                <p>
-                    No confirmed structural or stratigraphic trap
-                    interpretation is available from the current
-                    evidence alone.
-                </p>
-            </div>
-
-        </section>
-
-        <footer>
-            GeoIntel Exploration Copilot · GeoHackathon 2026
-        </footer>
-
-    </main>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
 </html>
