@@ -29,6 +29,7 @@ svg { display: block; }
 .brand { display: flex; align-items: center; gap: 11px; padding: 0 10px; color: inherit; text-decoration: none; }
 .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(180, 220, 202, .12); border-radius: 12px; color: #92c6b5; background: #213a39; }
 .brand-mark svg { width: 28px; height: 28px; }
+.brand-mark img { width: 28px; height: 28px; object-fit: contain;}
 .brand-copy { display: flex; flex-direction: column; gap: 4px; }
 .brand-copy strong { font: 800 13px/1 'Manrope', 'Segoe UI', sans-serif; letter-spacing: 1.6px; }
 .brand-copy small { color: #93aaa4; font-size: 8px; font-weight: 600; letter-spacing: 1.25px; }
