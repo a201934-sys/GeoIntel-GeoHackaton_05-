@@ -79,9 +79,9 @@ h1 { margin-bottom: 8px; color: #24353a; font: 700 32px/1.2 'Manrope', 'Segoe UI
 .page-subtitle { max-width: 690px; margin: 0; color: #7e8d90; font-size: 13px; line-height: 1.6; }
 .conversation-workspace { max-width: 900px; border: 1px solid #e3eae6; border-radius: 15px; padding: 23px 24px 16px; background: #fff; box-shadow: var(--shadow); }
 .assistant-welcome { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-.welcome-orbit { width: 51px; height: 51px; display: grid; flex: 0 0 auto; place-items: center; border: 1px solid #dcece4; border-radius: 15px; color: #578d7c; background: linear-gradient(145deg, #f2f8f4, #eaf4ee); }
+.welcome-orbit { width: 60px; height: 60px; display: grid; flex: 0 0 auto; place-items: center; border: 1px solid #dcece4; border-radius: 15px; color: #578d7c; background: linear-gradient(145deg, #f2f8f4, #eaf4ee); }
 .welcome-orbit svg { width: 37px; height: 37px; }
-.welcome-orbit img {display: block; width: 37px; height: 37px; max-width: 100%;  max-height: 100%;  object-fit: contain;}
+.welcome-orbit img {display: block; width: 48px; height: 48px; max-width: 100%;  max-height: 100%;  object-fit: contain;}
 .assistant-welcome-copy { min-width: 0; }
 .welcome-kicker { color: #8b9b95; font-size: 8px; font-weight: 700; letter-spacing: 1px; }
 .assistant-welcome h2 { margin: 4px 0 5px; color: #2b3c40; font: 700 18px/1.3 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.3px; }
