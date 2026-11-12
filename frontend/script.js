@@ -1,66 +1,87 @@
 
-// =====================================
-// GEOINTEL - EXPLORATION COPILOT
-// Frontend Interaction
-// =====================================
+// PAGE NAVIGATION
+const navItems = document.querySelectorAll(".nav-item");
+const pages = document.querySelectorAll(".page-section");
+const pageTitle = document.getElementById("page-title");
 
-document.addEventListener("DOMContentLoaded", () => {
+navItems.forEach(item => {
+    item.addEventListener("click", () => {
 
-    console.log("GeoIntel interface initialized.");
+        navItems.forEach(nav => nav.classList.remove("active"));
+        pages.forEach(page => page.classList.remove("active"));
 
-    // Navigation
-    const navItems = document.querySelectorAll(".nav-item");
+        item.classList.add("active");
 
-    navItems.forEach(item => {
-        item.addEventListener("click", () => {
-            navItems.forEach(nav => nav.classList.remove("active"));
-            item.classList.add("active");
-        });
+        const page = item.dataset.page;
+        document.getElementById(page).classList.add("active");
+
+        pageTitle.textContent = item.textContent.trim().replace(/^[^\w]+/, "");
     });
+});
 
-    // Chat functionality
-    const chatForm = document.getElementById("chat-form");
-    const chatInput = document.getElementById("chat-input");
-    const chatMessages = document.getElementById("chat-messages");
 
-    function addMessage(message, sender) {
-        if (!chatMessages) return;
+// CHAT INTERFACE
+const chatForm = document.getElementById("chat-form");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
 
-        const messageElement = document.createElement("div");
-        messageElement.className = `message ${sender}`;
-        messageElement.textContent = message;
+function addMessage(sender, message) {
 
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+    const messageDiv = document.createElement("div");
 
-    if (chatForm && chatInput) {
-        chatForm.addEventListener("submit", (event) => {
-            event.preventDefault();
+    messageDiv.className =
+        sender === "You" ? "message user" : "message assistant";
 
-            const question = chatInput.value.trim();
+    const name = document.createElement("strong");
+    name.textContent = sender;
 
-            if (!question) return;
+    const text = document.createElement("p");
+    text.textContent = message;
 
-            addMessage(question, "user");
+    messageDiv.appendChild(name);
+    messageDiv.appendChild(text);
 
-            chatInput.value = "";
+    chatMessages.appendChild(messageDiv);
 
-            addMessage(
-                "Demo interface: AI backend connection is pending.",
-                "assistant"
-            );
-        });
-    }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-    // Suggested questions
-    document.querySelectorAll("[data-question]").forEach(button => {
-        button.addEventListener("click", () => {
-            if (!chatInput) return;
 
-            chatInput.value = button.dataset.question;
-            chatInput.focus();
-        });
+// SEND MESSAGE
+chatForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const question = chatInput.value.trim();
+
+    if (!question) return;
+
+    addMessage("You", question);
+
+    chatInput.value = "";
+
+    addMessage(
+        "GeoIntel AI",
+        "Your question has been received. AI backend integration with Gemma 4 is pending."
+    );
+
+});
+
+
+// SUGGESTED QUESTIONS
+document.querySelectorAll(".suggestions button").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        chatInput.value = button.dataset.question;
+
+        chatInput.focus();
+
     });
 
 });
+
+
+// INITIALIZATION
+console.log("GeoIntel frontend initialized successfully.");
+
