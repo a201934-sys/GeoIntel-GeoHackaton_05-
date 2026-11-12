@@ -81,6 +81,7 @@ h1 { margin-bottom: 8px; color: #24353a; font: 700 32px/1.2 'Manrope', 'Segoe UI
 .assistant-welcome { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .welcome-orbit { width: 51px; height: 51px; display: grid; flex: 0 0 auto; place-items: center; border: 1px solid #dcece4; border-radius: 15px; color: #578d7c; background: linear-gradient(145deg, #f2f8f4, #eaf4ee); }
 .welcome-orbit svg { width: 37px; height: 37px; }
+.welcome-orbit img {display: block; width: 37px; height: 37px; object-fit: contain;}
 .assistant-welcome-copy { min-width: 0; }
 .welcome-kicker { color: #8b9b95; font-size: 8px; font-weight: 700; letter-spacing: 1px; }
 .assistant-welcome h2 { margin: 4px 0 5px; color: #2b3c40; font: 700 18px/1.3 'Manrope', 'Segoe UI', sans-serif; letter-spacing: -.3px; }
