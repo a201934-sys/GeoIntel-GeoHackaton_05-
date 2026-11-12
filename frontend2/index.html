@@ -22,36 +22,30 @@
           <span class="brand-copy"><strong>GEOINTEL</strong><small>GEOLOGY COPILOT</small></span>
         </a>
 
-        <div class="workspace-switcher">
-          <span class="overline">ACTIVE WORKSPACE</span>
-          <button class="workspace-picker" type="button" aria-label="Current workspace: Challenge 1">
-            <span class="workspace-avatar">C1</span>
-            <span class="workspace-name"><strong>Challenge 1</strong><small>Exploration workspace</small></span>
-            <svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
-          </button>
-        </div>
-
         <nav class="primary-nav" aria-label="Primary navigation">
-          <span class="overline nav-label">EXPLORE</span>
+          <span class="overline nav-label">WORKSPACE</span>
           <button class="nav-item is-active" type="button" data-view="overview" aria-current="page">
             <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1"/></svg>
             <span>Ask GeoIntel</span>
           </button>
-          <button class="nav-item" type="button" data-view="interpretation">
+          <button class="nav-item" type="button" data-view="analysis">
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 13.8c2.1-4.2 3.8-6.3 5.6-6.3 2 0 2.9 4.8 4.8 4.8 1.2 0 2.2-1.5 3.6-4.8"/><path d="M3 17h14"/><circle cx="8.6" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
-            <span>Analysis</span>
+            <span>Analysis Workspace</span>
+          </button>
+          <button class="nav-item" type="button" data-view="knowledge">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H17v14H6.5A2.5 2.5 0 0 0 4 18.5v-14Z"/><path d="M4 4.5v14M7.5 6H14M7.5 9H14"/></svg>
+            <span>Knowledge &amp; Sources</span>
+          </button>
+          <button class="nav-item" type="button" data-view="insights">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16V9M8 16V5M13 16v-4M18 16V3"/><path d="m3 6 5-3 5 5 5-5"/></svg>
+            <span>Exploration Insights</span>
           </button>
         </nav>
 
         <div class="sidebar-bottom">
           <div class="sidebar-tip">
             <span class="tip-spark" aria-hidden="true">✦</span>
-            <p>Start with a geology question. Add evidence whenever you need a prospect-specific view.</p>
-          </div>
-          <div class="sidebar-user">
-            <span class="user-avatar">KM</span>
-            <span><strong>Geo team</strong><small>Prototype workspace</small></span>
-            <button class="more-button" type="button" aria-label="More options">···</button>
+            <p>Explore geology, compare interpretations, and review sources in one place.</p>
           </div>
         </div>
       </aside>
@@ -151,9 +145,19 @@
               </section>
             </section>
 
-            <section class="view-panel" id="view-interpretation" aria-labelledby="page-title-interpretation" hidden>
-              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> GEOLOGICAL REASONING</div><h1 id="page-title-interpretation">Analysis</h1><p class="page-subtitle">Ask GeoIntel to inspect evidence when you are ready to explore a specific prospect.</p></div><button class="button button-primary" type="button" data-go-home="analysis">Start a question <span aria-hidden="true">→</span></button></div>
-              <section class="panel quiet-empty-state"><span class="empty-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 31c8-11 14-15 22-15 5 0 9 2 14 3M6 37c8-11 14-15 22-15 5 0 9 2 14 3"/><circle cx="34" cy="11" r="4"/></svg></span><h2>Analysis appears after you ask</h2><p>Start a conversation and ask GeoIntel to inspect evidence. The assistant should distinguish observations from interpretations and explain uncertainty.</p></section>
+            <section class="view-panel" id="view-analysis" aria-labelledby="page-title-analysis" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> GEOLOGICAL REASONING</div><h1 id="page-title-analysis">Analysis Workspace</h1><p class="page-subtitle">Explore geological questions, compare possible interpretations, and consider what evidence would help test them.</p></div><button class="button button-primary" type="button" data-go-home="analysis">Start a question <span aria-hidden="true">→</span></button></div>
+              <section class="panel quiet-empty-state"><span class="empty-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 31c8-11 14-15 22-15 5 0 9 2 14 3M6 37c8-11 14-15 22-15 5 0 9 2 14 3"/><circle cx="34" cy="11" r="4"/></svg></span><h2>Your analysis starts with a question</h2><p>Ask GeoIntel to explain a concept or reason through a geological interpretation. When evidence is connected, the assistant can distinguish observations, interpretations, alternatives, and uncertainty.</p></section>
+            </section>
+
+            <section class="view-panel" id="view-knowledge" aria-labelledby="page-title-knowledge" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> KNOWLEDGE &amp; SOURCES</div><h1 id="page-title-knowledge">Knowledge &amp; Sources</h1><p class="page-subtitle">Bring geological context into a conversation when you want GeoIntel to consider specific source material.</p></div><button class="button button-primary" type="button" data-go-home="knowledge">Ask GeoIntel <span aria-hidden="true">→</span></button></div>
+              <section class="panel quiet-empty-state"><span class="empty-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 9.5A4.5 4.5 0 0 1 16.5 5H36v28H16.5a4.5 4.5 0 0 0-4.5 4.5v-28Z"/><path d="M12 9.5V37.5M20 13h10M20 19h10"/></svg></span><h2>Add sources when you need them</h2><p>Start a conversation and attach reports, maps, images, or other geological material. Files are not available to the assistant until an upload and analysis service is connected.</p></section>
+            </section>
+
+            <section class="view-panel" id="view-insights" aria-labelledby="page-title-insights" hidden>
+              <div class="page-heading compact-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> EXPLORATION INSIGHTS</div><h1 id="page-title-insights">Exploration Insights</h1><p class="page-subtitle">Review geological reasoning and visualizations returned through your conversations with GeoIntel.</p></div><button class="button button-primary" type="button" data-go-home="insights">Ask GeoIntel <span aria-hidden="true">→</span></button></div>
+              <section class="panel quiet-empty-state"><span class="empty-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 36V23M18 36V14M28 36V20M38 36V9"/><path d="m8 17 10-8 10 9 10-13"/></svg></span><h2>Insights appear as you explore</h2><p>Ask a question to begin. GeoIntel's explanations and any returned geological visualizations will appear in the conversation, with uncertainty made clear.</p></section>
             </section>
 
           </div>
