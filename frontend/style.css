@@ -97,7 +97,7 @@ nav {
 
 .nav-item:hover,
 .nav-item.active {
-    background: #1a3545;
+    background: #b80217;
     color: var(--accent);
 }
 
