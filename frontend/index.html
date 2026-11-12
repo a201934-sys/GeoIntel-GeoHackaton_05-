@@ -5,11 +5,338 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoIntel | Exploration Copilot</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>GeoIntel</h1>
-    <p>AI-Powered Exploration Geoscience Assistant</p>
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">G</div>
+            <div>
+                <h2>GeoIntel</h2>
+                <span>EXPLORATION COPILOT</span>
+            </div>
+        </div>
+
+        <div class="nav-label">WORKSPACE</div>
+
+        <nav>
+            <button class="nav-item active" data-page="assistant">
+                ✦ &nbsp; AI Assistant
+            </button>
+
+            <button class="nav-item" data-page="data">
+                ▦ &nbsp; Data Sources
+            </button>
+
+            <button class="nav-item" data-page="analysis">
+                ◈ &nbsp; Seismic Analysis
+            </button>
+
+            <button class="nav-item" data-page="insights">
+                ◎ &nbsp; Exploration Insights
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <p>GeoIntel v1.0</p>
+            <p>GeoHackathon 2026</p>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div>
+                <span class="breadcrumb">Workspace / </span>
+                <strong id="page-title">AI Assistant</strong>
+            </div>
+
+            <div class="model-status">
+                <span class="status-dot"></span>
+                Gemma 4
+            </div>
+        </header>
+
+
+        <!-- AI ASSISTANT -->
+        <section class="page-section active" id="assistant">
+
+            <div class="welcome-section">
+                <span class="eyebrow">AI-POWERED GEOSCIENCE INTELLIGENCE</span>
+
+                <h1>Explore beneath the surface.</h1>
+
+                <p>
+                    Your intelligent exploration companion.
+                    Analyze geological evidence, interpret prospects
+                    and generate exploration recommendations.
+                </p>
+            </div>
+
+
+            <!-- OVERVIEW CARDS -->
+            <div class="overview-grid">
+
+                <div class="stat-card">
+                    <span>SELECTED WELL</span>
+                    <h2>NO-1</h2>
+                    <small>Well data loaded</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>ANALYSIS INTERVALS</span>
+                    <h2>05</h2>
+                    <small>Depth-dependent analysis</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>MEAN SAND PROBABILITY</span>
+                    <h2>0.652</h2>
+                    <small>2800 m MDKB · Provisional</small>
+                </div>
+
+            </div>
+
+
+            <!-- CHAT SECTION -->
+            <div class="chat-container">
+
+                <div class="chat-heading">
+                    <div>
+                        <h2>GeoIntel AI Assistant</h2>
+                        <p>Ask anything about your exploration prospect.</p>
+                    </div>
+
+                    <span class="ai-badge">✦ AI ACTIVE</span>
+                </div>
+
+
+                <div id="chat-messages" class="chat-messages">
+
+                    <div class="message assistant">
+                        <strong>GeoIntel AI</strong>
+                        <p>
+                            Hello, Geoscientist! I'm GeoIntel,
+                            your AI exploration assistant.
+
+                            I can help you interpret seismic data,
+                            evaluate reservoir potential, identify
+                            geological risks and recommend further
+                            exploration actions.
+
+                            What would you like to investigate today?
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SUGGESTED QUESTIONS -->
+                <div class="suggestions">
+
+                    <button data-question="What is the most promising reservoir interval?">
+                        Reservoir potential
+                    </button>
+
+                    <button data-question="What are the key geological uncertainties?">
+                        Geological risks
+                    </button>
+
+                    <button data-question="Explain the sand probability results.">
+                        Sand probability
+                    </button>
+
+                    <button data-question="What exploration actions do you recommend?">
+                        Exploration strategy
+                    </button>
+
+                </div>
+
+
+                <!-- CHAT INPUT -->
+                <form id="chat-form" class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="chat-input"
+                        placeholder="Ask your geological question..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" class="send-button">
+                        ➤
+                    </button>
+
+                </form>
+
+                <p class="disclaimer">
+                    AI-generated interpretations require geological
+                    validation. Results may contain uncertainties.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DATA SOURCES -->
+        <section class="page-section" id="data">
+
+            <div class="section-heading">
+                <span class="eyebrow">PROJECT DATABASE</span>
+                <h1>Data Sources</h1>
+                <p>Overview of available exploration datasets.</p>
+            </div>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>◈ Seismic Data</h3>
+                    <p>Seismic stack and inversion datasets</p>
+                    <span class="data-tag">Check availability</span>
+                </div>
+
+                <div class="data-card">
+                    <h3>▤ Well Data</h3>
+                    <p>Well NO-1 and petrophysical information</p>
+                    <span class="data-tag">Available</span>
+                </div>
+
+                <div class="data-card">
+                    <h3>▧ Geological Reports</h3>
+                    <p>Regional geological information</p>
+                    <span class="data-tag">Check availability</span>
+                </div>
+
+                <div class="data-card">
+                    <h3>◎ Checkshot Data</h3>
+                    <p>Well-to-seismic time-depth calibration</p>
+                    <span class="data-tag warning">Validation pending</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEISMIC ANALYSIS -->
+        <section class="page-section" id="analysis">
+
+            <div class="section-heading">
+                <span class="eyebrow">SUBSURFACE INTERPRETATION</span>
+                <h1>Seismic & Well Analysis</h1>
+                <p>Explore quantitative analysis and reservoir indicators.</p>
+            </div>
+
+            <div class="analysis-grid">
+
+                <div class="analysis-card">
+                    <h3>Sand Probability</h3>
+                    <p>Well NO-1 · Depth-dependent analysis</p>
+
+                    <div class="probability-value">0.652</div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                    <small>Mean probability at 2800 m MDKB</small>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>Maximum Probability</h3>
+                    <p>Well NO-1</p>
+
+                    <div class="probability-value">0.921</div>
+
+                    <small>Provisional inversion result</small>
+                </div>
+
+            </div>
+
+            <div class="data-card uncertainty-card">
+                <h3>Analysis Limitations</h3>
+                <p>
+                    Checkshot validation is pending.
+                    Well-to-seismic tie and vertical depth-to-time
+                    correlation have not been confirmed.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- EXPLORATION INSIGHTS -->
+        <section class="page-section" id="insights">
+
+            <div class="section-heading">
+                <span class="eyebrow">AI-GENERATED GEOLOGICAL ASSESSMENT</span>
+                <h1>Exploration Insights</h1>
+                <p>Evidence-based interpretation and recommendations.</p>
+            </div>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>◈ Reservoir Potential</h3>
+                    <p>
+                        Evaluate sand probability alongside
+                        lithology and petrophysical evidence.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>◎ Geological Risks</h3>
+                    <p>
+                        Assess uncertainty in lithology,
+                        fluid content and seismic correlation.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>✦ Exploration Recommendations</h3>
+                    <p>
+                        Prioritize well-to-seismic calibration
+                        and petrophysical verification.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="data-card uncertainty-card">
+                <h3>Important Notice</h3>
+                <p>
+                    No confirmed structural or stratigraphic trap
+                    interpretation is available from the current
+                    evidence alone.
+                </p>
+            </div>
+
+        </section>
+
+        <footer>
+            GeoIntel Exploration Copilot · GeoHackathon 2026
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
