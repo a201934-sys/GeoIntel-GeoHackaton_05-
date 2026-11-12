@@ -1,0 +1,47 @@
+
+/* =================================
+   GEOINTEL - EXPLORATION COPILOT
+   Main Design System
+================================= */
+
+:root {
+    --bg-main: #0B1729;
+    --bg-card: #14243A;
+    --bg-sidebar: #101D30;
+    --accent-cyan: #22D3EE;
+    --accent-teal: #14B8A6;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-color: #263B53;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: var(--text-primary);
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
