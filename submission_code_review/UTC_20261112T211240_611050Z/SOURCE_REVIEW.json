@@ -1,0 +1,74 @@
+{
+  "status": "prepared_for_source_review_not_executed_or_published",
+  "notebook": "GeoIntel_05.ipynb",
+  "cells_retained": 66,
+  "helper_files": [
+    "add_reference_library.py",
+    "add_seismic_tool.py",
+    "add_td_transfer_tool.py",
+    "manage_copilot_session.py",
+    "manage_td_session_v2.py"
+  ],
+  "dependency_versions": {
+    "ipython": "9.12.0",
+    "ipywidgets": "8.1.8",
+    "joblib": "1.6.0",
+    "lasio": "0.32",
+    "matplotlib": "3.11.2",
+    "numpy": "2.4.4",
+    "openai": "2.54.0",
+    "openpyxl": "3.1.5",
+    "pandas": "3.0.6",
+    "segyio": "1.9.14",
+    "scikit-learn": "1.9.1",
+    "threadpoolctl": "3.7.0"
+  },
+  "outputs_cleared": true,
+  "attachments_removed": true,
+  "widget_state_removed": true,
+  "original_notebook_changed": false,
+  "cold_start_execution_tested": false,
+  "source_scan_is_comprehensive": false,
+  "review_findings": [
+    {
+      "location": "GeoIntel_05.ipynb:cell 1",
+      "kind": "review_endpoint_portability"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 2",
+      "kind": "review_failed_call",
+      "error_type": "FileNotFoundError"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 3",
+      "kind": "review_failed_call",
+      "error_type": "NameError"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 11",
+      "kind": "review_endpoint_portability"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 27",
+      "kind": "review_failed_call",
+      "error_type": "IndentationError"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 55",
+      "kind": "review_failed_call",
+      "error_type": "FileNotFoundError"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 59",
+      "kind": "review_helper_writing_cell"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 62",
+      "kind": "review_helper_writing_cell"
+    },
+    {
+      "location": "GeoIntel_05.ipynb:cell 64",
+      "kind": "review_helper_writing_cell"
+    }
+  ]
+}
