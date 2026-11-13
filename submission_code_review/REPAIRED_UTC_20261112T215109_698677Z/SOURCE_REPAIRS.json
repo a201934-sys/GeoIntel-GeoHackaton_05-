@@ -1,0 +1,75 @@
+{
+  "status": "source_repairs_prepared_runtime_test_pending",
+  "folder": "/data/epic20/APGCE/apgce_team_05/GeoIntel-GeoHackaton_05/submission_code_review/REPAIRED_UTC_20261112T215109_698677Z",
+  "notebook": "GeoIntel_05.ipynb",
+  "original_review_sha256": "b16ae777a0c42e298721086fb63c55af2c9a2838c07825317e5fe3cba6392e2c",
+  "actions": [
+    {
+      "original_cell": 1,
+      "action": "configured_endpoint_via_private_local_file_or_environment"
+    },
+    {
+      "original_cell": 2,
+      "action": "replaced_placeholder_with_supplied_eo1_LAS"
+    },
+    {
+      "original_cell": 11,
+      "action": "configured_endpoint_via_private_local_file_or_environment"
+    },
+    {
+      "original_cell": 27,
+      "action": "disabled_unexecuted_malformed_experiment"
+    },
+    {
+      "original_cell": 46,
+      "action": "disabled_optional_recovery_example",
+      "call_names": [
+        "save_copilot_session",
+        "verify_copilot_checkpoint"
+      ]
+    },
+    {
+      "original_cell": 55,
+      "action": "matched_actual_export_filename_preserving_parser_definitions"
+    },
+    {
+      "original_cell": 59,
+      "action": "disabled_historical_helper_writer"
+    },
+    {
+      "original_cell": 62,
+      "action": "disabled_historical_helper_writer"
+    },
+    {
+      "original_cell": 63,
+      "action": "disabled_optional_recovery_example",
+      "call_names": [
+        "save_copilot_session",
+        "verify_copilot_checkpoint"
+      ]
+    },
+    {
+      "original_cell": 64,
+      "action": "disabled_historical_helper_writer"
+    },
+    {
+      "original_cell": 65,
+      "action": "disabled_optional_recovery_example",
+      "call_names": [
+        "save_td_session_v2",
+        "verify_td_session_v2"
+      ]
+    }
+  ],
+  "manual_review": [],
+  "syntax_checked_code_cells": 64,
+  "syntax_check_scope": "Python grammar; notebook and magic commands were not executed",
+  "ready_for_separate_kernel_runtime_test": true,
+  "cold_start_execution_tested": false,
+  "model_requests_made_by_repair": 0,
+  "original_notebook_or_previous_review_changed": false,
+  "live_app_replaced": false,
+  "private_endpoint_config_created": true,
+  "archive_created": false,
+  "legacy_manager_aligned_to_version": 2
+}
